@@ -1,4 +1,4 @@
-//find largest primr factor of a number
+//find largest prime factor of a number
 function largestPrime(number) {
     "use strict";
     //staring prime number
