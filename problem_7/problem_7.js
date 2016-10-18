@@ -12,6 +12,7 @@ function nthPrime(p) {
     //start testing from number 5
     var number = 5;
     var isPrime;
+    var squared;
 
     //start time counter
     var t0 = performance.now();
@@ -20,15 +21,17 @@ function nthPrime(p) {
     var count = 2;
     while (count != p) {
         isPrime = true;
+        squared = Math.sqrt(number);
 
         //check to see if number is prime by testing against found prime numbers
-        prime.map(function (n) {
-            if (n <= Math.sqrt(number)) {
-                if (number % n === 0) {
+        for (var i = 0; i < prime.length; i++) {
+            if (prime[i] <= squared) {
+                if (number % prime[i] === 0) {
                     isPrime = false;
+                    break;
                 }
             }
-        });
+        }
 
         //if number is prime add it to array and increase count
         if (isPrime) {
@@ -42,7 +45,7 @@ function nthPrime(p) {
 
     //calculate time taken
     var t1 = performance.now();
-    var time = (t1 - t0) / 1000;
+    var time = (t1 - t0);
 
     //create a div and attach solution to the webpage
     var solution = document.createElement("DIV");
@@ -52,7 +55,7 @@ function nthPrime(p) {
 
     //create a div and attach time taken to webpage
     var timeStamp = document.createElement("DIV");
-    var timeText = document.createTextNode(time.toFixed(1) + " sec");
+    var timeText = document.createTextNode(time.toFixed(1) + " millisec");
     timeStamp.appendChild(timeText);
     document.getElementById("time").appendChild(timeStamp);
 }
