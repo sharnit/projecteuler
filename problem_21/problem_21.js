@@ -1,7 +1,7 @@
 //function to calculate the sum of proper divisors of the number
 function properDivisorSum(n) {
     var sum = 1;
-    for (var i = 2; i < Math.sqrt(n); i++) {
+    for (var i = 2; i <= Math.sqrt(n); i++) {
         if (n % i === 0) {
             sum += i;
             var extraDivisor = n/i;
